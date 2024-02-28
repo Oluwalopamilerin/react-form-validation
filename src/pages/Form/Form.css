@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: url("../assets/background.jpg");
+  background: url("../../assets/background.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -27,4 +27,9 @@
   border-radius: 5px;
   font-size: 18px;
   margin: 1rem 0;
+}
+
+.btn:hover{
+  background-color: rgb(200, 200, 200);
+  transition: 0.5s;
 }
