@@ -22,7 +22,12 @@ const Form = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleClick = (e) => {};
+  const handleClick = (e) => {
+    setLoading(!loading);
+    loading
+      ? (e.target.textContent = "Submitting")
+      : (e.target.textContent = "Submit");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
