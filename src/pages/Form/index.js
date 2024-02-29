@@ -20,11 +20,14 @@ const Form = () => {
   // console.log(usernameRef);
   // console.log("re-rendered");
 
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = (e) => {};
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(values);
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    console.log(existingUsers);
     if (
       existingUsers.some((v) => {
         return v.email === values.email;

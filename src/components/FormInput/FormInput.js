@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import "./FormInput.css";
 
@@ -11,21 +12,42 @@ const FormInput = (props) => {
     setFocused(true);
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <div className="form-input">
-      <label>{label}</label>
-      <input
-        {...inputProps}
-        onChange={onChange}
-        className="input"
-        onBlur={handleFocus}
-        onFocus={() =>
-          inputProps.name === "confirmPassword" && setFocused(true)
-        }
-        focused={focused.toString()}
-      />
-      <span className="error-msg">{errorMessage}</span>
-    </div>
+    <>
+      <div className="form-input">
+        <label>{label}</label>
+
+        {inputProps.icon === "true" &&
+          (showPassword ? (
+            <span className="eye-icon" onClick={togglePasswordVisibility}>
+              <FaEyeSlash />
+            </span>
+          ) : (
+            <span className="eye-icon" onClick={togglePasswordVisibility}>
+              <FaEye />
+            </span>
+          ))}
+        <input
+          {...inputProps}
+          onChange={onChange}
+          className="input"
+          onBlur={handleFocus}
+          onFocus={() =>
+            inputProps.name === "confirmPassword" && setFocused(true)
+          }
+          focused={focused.toString()}
+          type={inputProps.icon === showPassword ? "text" : "password"}
+        />
+
+        <span className="error-msg">{errorMessage}</span>
+      </div>
+    </>
   );
 };
 
