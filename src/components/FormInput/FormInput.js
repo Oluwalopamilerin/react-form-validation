@@ -18,32 +18,43 @@ const FormInput = (props) => {
     setShowPassword(!showPassword);
   };
 
+  const getPasswordType = () => {
+    let type = "password";
+    if (showPassword) {
+      type = "text";
+    } else {
+      type = "password";
+    }
+    return type;
+  };
+
   return (
     <>
       <div className="form-input">
         <label>{label}</label>
+        <div style={{ width: "100%", position: "relative" }}>
+          {inputProps.password === "password" && (
+            <span className="eye-icon" onClick={togglePasswordVisibility}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          )}
 
-        {inputProps.icon === "true" &&
-          (showPassword ? (
-            <span className="eye-icon" onClick={togglePasswordVisibility}>
-              <FaEyeSlash />
-            </span>
-          ) : (
-            <span className="eye-icon" onClick={togglePasswordVisibility}>
-              <FaEye />
-            </span>
-          ))}
-        <input
-          {...inputProps}
-          onChange={onChange}
-          className="input"
-          onBlur={handleFocus}
-          onFocus={() =>
-            inputProps.name === "confirmPassword" && setFocused(true)
-          }
-          focused={focused.toString()}
-          type={inputProps.icon === showPassword ? "text" : "password"}
-        />
+          <input
+            {...inputProps}
+            onChange={onChange}
+            className="input"
+            onBlur={handleFocus}
+            onFocus={() =>
+              inputProps.name === "confirmPassword" && setFocused(true)
+            }
+            focused={focused.toString()}
+            type={
+              inputProps.name === "password"
+                ? getPasswordType()
+                : inputProps.type
+            }
+          />
+        </div>
 
         <span className="error-msg">{errorMessage}</span>
       </div>

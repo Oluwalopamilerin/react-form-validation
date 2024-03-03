@@ -14,6 +14,12 @@ const Form = () => {
     confirmPassword: "",
   });
 
+  const onChange = (e) =>
+    setValues(() => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
+
   const inputs = inputsArr({ values });
 
   // const usernameRef = useRef();
@@ -21,13 +27,6 @@ const Form = () => {
   // console.log("re-rendered");
 
   const [loading, setLoading] = useState(false);
-
-  const handleClick = (e) => {
-    setLoading(!loading);
-    loading
-      ? (e.target.textContent = "Submitting")
-      : (e.target.textContent = "Submit");
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,12 +53,6 @@ const Form = () => {
     });
   };
 
-  const onChange = (e) =>
-    setValues(() => ({
-      ...values,
-      [e.target.name]: e.target.value,
-    }));
-
   return (
     <div className="form-body">
       <form onSubmit={handleSubmit} className="form">
@@ -72,7 +65,9 @@ const Form = () => {
             onChange={onChange}
           />
         ))}
-        <button className="btn">Submit</button>
+        <button className="btn" disabled={loading}>
+          {loading ? "Submitting..." : "Submit"}
+        </button>
       </form>
     </div>
   );

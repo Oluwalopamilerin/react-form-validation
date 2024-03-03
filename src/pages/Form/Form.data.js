@@ -39,7 +39,6 @@ export const inputsArr = ({ values }) => {
       pattern:
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
       required: true,
-      icon: "true",
     },
     {
       id: 5,
@@ -50,7 +49,6 @@ export const inputsArr = ({ values }) => {
       label: "Confirm Password",
       pattern: values.password,
       required: true,
-      icon: "true",
     },
   ];
 
