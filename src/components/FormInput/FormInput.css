@@ -30,10 +30,10 @@ bottom: 22px;
   /* display: none; */
 }
 
-input:invalid[focused="true"]{
+/* input:invalid[focused="true"]{
   border: 1px solid red;
 }
 
 input:invalid[focused="true"] ~ .error-msg{
   display: block;
-}
+} */

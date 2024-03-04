@@ -8,7 +8,6 @@ export const inputsArr = ({ values }) => {
       errorMessage:
         "Username should be 3-16 characters with no special characters.",
       label: "Username",
-      required: true,
       pattern: "^[A-Za-z0-9]{3,16}$",
     },
     {
@@ -18,7 +17,7 @@ export const inputsArr = ({ values }) => {
       placeholder: "user@gmail.com",
       errorMessage: "Enter a valid email address.",
       label: "Email",
-      required: true,
+      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
     },
     {
       id: 3,
@@ -38,7 +37,6 @@ export const inputsArr = ({ values }) => {
       label: "Password",
       pattern:
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
-      required: true,
     },
     {
       id: 5,
@@ -48,7 +46,6 @@ export const inputsArr = ({ values }) => {
       errorMessage: "Passwords don't match",
       label: "Confirm Password",
       pattern: values.password,
-      required: true,
     },
   ];
 
