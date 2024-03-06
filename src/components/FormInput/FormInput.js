@@ -33,7 +33,7 @@ const FormInput = (props) => {
       <div className="form-input">
         <label>{label}</label>
         <div style={{ width: "100%", position: "relative" }}>
-          {inputProps.password === "password" && (
+          {inputProps.type === "password" && (
             <span className="eye-icon" onClick={togglePasswordVisibility}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
