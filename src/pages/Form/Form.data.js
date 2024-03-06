@@ -5,7 +5,7 @@ export const inputsArr = ({ values }) => {
       name: "username",
       type: "text",
       placeholder: "Username",
-      // errorMessage:
+      errorMessage: values?.errors?.username,
       //   "Username should be 3-16 characters with no special characters.",
       label: "Username",
       // pattern: "^[A-Za-z0-9]{3,16}$",
@@ -15,7 +15,8 @@ export const inputsArr = ({ values }) => {
       name: "email",
       type: "email",
       placeholder: "user@gmail.com",
-      // errorMessage: "Enter a valid email address.",
+      errorMessage: values?.errors?.email,
+      // "Enter a valid email address.",
       label: "Email",
       // pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
     },
@@ -24,7 +25,7 @@ export const inputsArr = ({ values }) => {
       name: "birthday",
       type: "date",
       placeholder: "Birthday",
-      // errorMessage: "",
+      errorMessage: "",
       label: "Birthday",
     },
     {
@@ -32,6 +33,7 @@ export const inputsArr = ({ values }) => {
       name: "password",
       type: "password",
       placeholder: "Password",
+      errorMessage: values?.errors?.password,
       // errorMessage:
       //   "Password should be 8-20 characters and include at least a number, letter, and special character.",
       label: "Password",
@@ -43,9 +45,10 @@ export const inputsArr = ({ values }) => {
       name: "confirmPassword",
       type: "password",
       placeholder: "Confirm Password",
+      errorMessage: values?.errors?.confirmPassword,
       // errorMessage: "Passwords don't match",
       label: "Confirm Password",
-      pattern: values.password,
+      // pattern: values.password,
     },
   ];
 
