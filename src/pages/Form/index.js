@@ -53,7 +53,7 @@ const Form = () => {
         break;
       case "confirmPassword":
         errors.confirmPassword =
-          value === values.password ? "" : "Passwords do not match.";
+          value === values.password ? "" : "Password does not match.";
         break;
       default:
         break;
@@ -69,41 +69,27 @@ const Form = () => {
 
   const [isSubmit, setIsSubmit] = useState(false);
 
+  const isFormValues =
+    values?.username &&
+    values?.email &&
+    values?.birthday &&
+    values?.password &&
+    values?.confirmPassword;
+  console.log(isFormValues);
+
+  const isFormErrors =
+    values?.errors?.username ||
+    values?.errors?.email ||
+    values?.errors?.birthday ||
+    values?.errors?.password ||
+    values?.errors?.confirmPassword;
+
+  const isDisableButton = !isFormValues || isFormErrors;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (
-      values.username.trim() === "" ||
-      values.email.trim() === "" ||
-      values.birthday === "" ||
-      values.password.trim() === "" ||
-      values.confirmPassword.trim() === ""
-    ) {
-      setErrorMsg("Please fill all fields");
-      setTimeout(() => {
-        setErrorMsg("");
-      }, 1500);
-    } else if (
-      values.errors.username.length ||
-      values.errors.email.length ||
-      values.errors.password.length
-    ) {
-      console.log("Error found");
-      setErrorMsg("Please fill required field");
-      setTimeout(() => {
-        setErrorMsg("");
-      }, 1500);
-    } else {
-      setIsSubmit(true);
-    }
-
-    if (
-      values.username &&
-      values.email &&
-      values.birthday &&
-      values.password &&
-      values.confirmPassword
-    ) {
+    setLoading(true);
+    setTimeout(() => {
       const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
       if (
         existingUsers.some((v) => {
@@ -124,7 +110,8 @@ const Form = () => {
         password: "",
         confirmPassword: "",
       });
-    }
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -139,7 +126,7 @@ const Form = () => {
             onChange={onChange}
           />
         ))}
-        <button className="btn" disabled={loading}>
+        <button className="btn" disabled={isDisableButton || loading}>
           {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
