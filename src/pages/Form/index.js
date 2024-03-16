@@ -86,8 +86,8 @@ const Form = () => {
 
   const isDisableButton = !isFormValues || isFormErrors;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setLoading(true);
     setTimeout(() => {
       const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
