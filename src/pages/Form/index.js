@@ -101,7 +101,6 @@ const Form = () => {
         existingUsers.push(values);
         const serializedData = JSON.stringify(existingUsers);
         localStorage.setItem("users", serializedData);
-        setIsSubmit(true);
       }
 
       setValues({
